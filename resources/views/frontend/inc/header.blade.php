@@ -7,8 +7,13 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('index') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('post') ? 'active' : '' }}" href="{{ route('single-post') }}">Post</a></li>
+                @guest
                 <li class="nav-item"><a class="nav-link {{ request()->is('user/register') ? 'active' : '' }}" href="{{ route('user.registerForm') }}">Register</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('user/login') ? 'active' : '' }}" href="{{ route('user.loginForm') }}">Login</a></li>
+                @endguest
+                @auth
+                    <li class="nav-item"><a class="nav-link" href="{{ route('user.logout') }}">{{ auth()->user()->name }} -> LogOut</a></li>
+                @endauth
             </ul>
         </div>
     </div>
