@@ -13,9 +13,20 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item {{ request()->is('admin/category/create') ? 'active' : '' }}" href="{{ route('admin.category.create') }}">Add Category</a></li>
-                        <li><a class="dropdown-item {{ request()->is('admin/category') ? 'active' : '' }}" href="{{ route('admin.category.index') }}">Manage Category</a></li>
+                        <li><a class="dropdown-item {{ request()->is('admin/category') ? 'active' : '' }}" href="{{ route('admin.category.index') }}">Manage Categories</a></li>
                     </ul>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->is('admin/post') ? 'active' : '' }} {{ request()->is('admin/post/create') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Post
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item {{ request()->is('admin/post/create') ? 'active' : '' }}" href="{{ route('admin.post.create') }}">Add Post</a></li>
+                        <li><a class="dropdown-item {{ request()->is('admin/post') ? 'active' : '' }}" href="{{ route('admin.post.index') }}">Manage Posts</a></li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     <form action="{{ route('user.logout') }}" method="POST">
                         @csrf
