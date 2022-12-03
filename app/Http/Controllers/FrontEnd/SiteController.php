@@ -71,7 +71,7 @@ class SiteController extends Controller
         ]);
         if(auth()->attempt($data))
         {
-            return redirect('/');
+            return redirect()->route('admin.dashboard');
         }else
         {
             return redirect()->back()->with(['message' => 'These credentials do not match our records.', 'type' => 'danger']);
