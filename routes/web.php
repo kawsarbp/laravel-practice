@@ -19,7 +19,7 @@ Route::prefix('/user')->name('user.')->group(function (){
     Route::get('/register',[SiteController::class,'showRegisterFrom'])->name('registerForm');
     Route::post('/register',[SiteController::class,'registration'])->name('registration');
 
-    Route::get('/logout',[SiteController::class,'logout'])->name('logout');
+    Route::post('/logout',[SiteController::class,'logout'])->name('logout');
 
     Route::get('/login',[SiteController::class,'loginFrom'])->name('loginForm');
     Route::post('/login',[SiteController::class,'login'])->name('login');

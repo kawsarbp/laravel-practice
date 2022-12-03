@@ -16,8 +16,12 @@
                         <li><a class="dropdown-item {{ request()->is('admin/category') ? 'active' : '' }}" href="{{ route('admin.category.index') }}">Manage Category</a></li>
                     </ul>
                 </li>
-
-                <li class="nav-item"><a class="nav-link" href="{{ route('user.logout') }}">LogOut</a></li>
+                <li class="nav-item">
+                    <form action="{{ route('user.logout') }}" method="POST">
+                        @csrf
+                        <a href="{{ route('user.logout') }}" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit()">LogOut</a>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
