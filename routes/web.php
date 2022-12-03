@@ -25,7 +25,7 @@ Route::prefix('/user')->name('user.')->group(function (){
     Route::post('/login',[SiteController::class,'login'])->name('login');
 });
 //dashboard routes
-Route::prefix('/admin')->name('admin.')->group(function (){
+Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function (){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     //category routes
     Route::prefix('/category')->name('category.')->group(function (){
@@ -33,6 +33,9 @@ Route::prefix('/admin')->name('admin.')->group(function (){
         Route::get('/create',[CategoryController::class,'create'])->name('create');
         Route::post('/store',[CategoryController::class,'store'])->name('store');
         Route::delete('/{id}',[CategoryController::class,'destroy'])->name('destroy');
+        Route::get('/edit/{id}',[CategoryController::class,'edit'])->name('edit');
+        Route::put('/edit/{id}',[CategoryController::class,'update'])->name('update');
+        Route::get('/{id}',[CategoryController::class,'show'])->name('show');
     });
 
 });

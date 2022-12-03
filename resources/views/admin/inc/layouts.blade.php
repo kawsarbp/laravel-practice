@@ -16,9 +16,7 @@
 
 <!-- Page content-->
 <div class="container" style="min-height: 550px;">
-    <div class="row">
-        @yield('content')
-    </div>
+    @yield('content')
 </div>
 
 @include('admin.inc.footer')
