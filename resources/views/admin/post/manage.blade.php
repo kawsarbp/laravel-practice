@@ -11,32 +11,35 @@
         <tr>
             <th>Sl No</th>
             <th>Post Title</th>
+            <th>Category Name</th>
             <th>Slug</th>
             <th>Photo</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
 
-        @foreach($posts as $post)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $post->title }}</td>
-                <td><a href="{{ $post->slug }}" target="_blank">Click Here</a></td>
-                <td><img src="{{ $post->photo }}" alt="" style="width: 60px;" ></td>
-                <td>{{ ucwords($post->status) }}</td>
-                <td>
+        @foreach($posts as $data)
+        <tr>
+            <td>{{ $data->id }}</td>
+            <td>{{ $data->title }}</td>
+            <td>{{ $data->category->name }}</td>
+            <td>{{ $data->slug }}</td>
+            <td><img src="{{ $data->photo }}" alt="" style="width: 100px;" ></td>
+            <td>{{ $data->status }}</td>
+            <td>
 
-                    <a href="{{ route('admin.post.show',$post->id) }}" class="btn btn-info btn-sm">View</a>
-                    <a href="{{ route('admin.category.edit',$post->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                    <form action="{{ route('admin.post.destroy',$post->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
-                </td>
-            </tr>
+                <a href="{{ route('admin.post.show',$data->id) }}" class="btn btn-info btn-sm">View</a>
+                <a href="{{ route('admin.category.edit',$data->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                <form action="{{ route('admin.post.destroy',$data->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
         @endforeach
     </table>
-    {{ $posts->links() }}
+
 @endsection
+
 

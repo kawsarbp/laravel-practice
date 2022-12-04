@@ -16,8 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->simplepaginate(9);
-        return view('admin.post.manage', compact('posts'));
+        $posts = Post::with('category')->get();
+        return view('admin.post.manage',compact('posts'));
     }
 
     /**

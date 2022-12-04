@@ -27,9 +27,13 @@ class PostTableSeeder extends Seeder
                 'slug' => strtolower(str_replace(' ','-',$name)),
                 'description' => $faker->text,
                 'photo' => $faker->imageUrl,
-                'status' => 'active',
-
+                'status' => $this->randStatus()
             ]);
         }
+    }
+    public function randStatus()
+    {
+        $status = ['active'=>'active','inactive'=>'inactive'];
+        return array_rand($status);
     }
 }

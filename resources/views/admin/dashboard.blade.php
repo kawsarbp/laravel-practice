@@ -4,5 +4,6 @@
 @endsection
 
 @section('content')
-    dashboard
+Dashboard
+
 @endsection

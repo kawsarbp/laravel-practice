@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('slug',30)->unique();
             $table->enum('status',['active','inactive']);
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-//            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
         });
     }
 
