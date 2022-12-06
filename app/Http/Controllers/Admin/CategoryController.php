@@ -41,7 +41,6 @@ class CategoryController extends Controller
             'status' => 'required'
         ]);
         try {
-
             $category = new Category();
             $category->user_id = auth()->id();
             $category->name = $request->name;
